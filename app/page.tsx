@@ -4,6 +4,7 @@ import {
   FinalCta,
   Footer,
   Hero,
+  ProofBar,
   HowItWorks,
   Navbar,
   Pricing,
@@ -15,6 +16,7 @@ export default function HomePage() {
     <main>
       <Navbar />
       <Hero />
+      <ProofBar />
       <Benefits />
       <HowItWorks />
       <RestaurantSection />
