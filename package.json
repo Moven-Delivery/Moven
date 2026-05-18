@@ -3,21 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "app",
-    "landing"
+    "app"
   ],
   "scripts": {
-    "dev": "npm run dev:landing",
-    "build": "npm run build:landing",
-    "start": "npm run start:landing",
-    "lint": "npm run lint:landing",
-    "dev:landing": "npm --workspace moven-landing run dev -- -p 3000",
+    "dev": "npm run dev:app",
+    "build": "npm run build:app",
+    "start": "npm run start:app",
+    "lint": "npm run lint:app",
     "dev:app": "npm --workspace moven-app run dev -- -p 3001",
-    "build:landing": "npm --workspace moven-landing run build",
     "build:app": "npm --workspace moven-app run build",
-    "start:landing": "npm --workspace moven-landing run start -- -p 3000",
     "start:app": "npm --workspace moven-app run start -- -p 3001",
-    "lint:landing": "npm --workspace moven-landing run lint",
     "lint:app": "npm --workspace moven-app run lint"
   }
 }
