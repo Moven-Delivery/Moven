@@ -7,6 +7,10 @@
     "landing"
   ],
   "scripts": {
+    "dev": "npm run dev:landing",
+    "build": "npm run build:landing",
+    "start": "npm run start:landing",
+    "lint": "npm run lint:landing",
     "dev:landing": "npm --workspace moven-landing run dev -- -p 3000",
     "dev:app": "npm --workspace moven-app run dev -- -p 3001",
     "build:landing": "npm --workspace moven-landing run build",
