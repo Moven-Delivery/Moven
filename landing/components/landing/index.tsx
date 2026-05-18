@@ -1,4 +1,4 @@
-import { Card, Section } from "@/components/ui";
+import { Card, Section } from "./ui";
 
 const navItems = [
   { label: "Recursos", href: "#recursos" },
@@ -106,10 +106,10 @@ export function Hero() {
           <div className="absolute right-0 top-10 w-[74%] rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-300/40">
             <p className="text-sm font-semibold text-slate-900">Painel da loja</p>
             <div className="mt-4 space-y-3">
-              {["#8421 Novo pedido", "#8420 Em preparo", "#8418 Pronto para saída"].map((item, i) => (
+              {['#8421 Novo pedido', '#8420 Em preparo', '#8418 Pronto para saída'].map((item, i) => (
                 <div key={item} className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm">
                   <span className="font-medium text-slate-700">{item}</span>
-                  <span className={`h-2.5 w-2.5 rounded-full ${i === 0 ? "bg-emerald-500" : i === 1 ? "bg-amber-500" : "bg-sky-500"}`} />
+                  <span className={`h-2.5 w-2.5 rounded-full ${i === 0 ? 'bg-emerald-500' : i === 1 ? 'bg-amber-500' : 'bg-sky-500'}`} />
                 </div>
               ))}
             </div>
@@ -125,15 +125,11 @@ export function Hero() {
             <button className="mt-3 w-full rounded-xl bg-primary py-2 text-sm font-semibold text-white">Confirmar pedido</button>
           </div>
 
-          {[
-            "Pedido recebido",
-            "Motoboy em rota",
-            "PIX confirmado",
-          ].map((tag, idx) => (
+          {['Pedido recebido', 'Motoboy em rota', 'PIX confirmado'].map((tag, idx) => (
             <div
               key={tag}
               className="absolute rounded-full border border-white/70 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-lg"
-              style={{ right: idx === 0 ? "18%" : idx === 1 ? "4%" : "28%", bottom: idx === 0 ? "28%" : idx === 1 ? "8%" : "2%" }}
+              style={{ right: idx === 0 ? '18%' : idx === 1 ? '4%' : '28%', bottom: idx === 0 ? '28%' : idx === 1 ? '8%' : '2%' }}
             >
               {tag}
             </div>
@@ -204,63 +200,40 @@ export function RestaurantSection() {
   );
 }
 
-export function CourierSection() {
+export function HowItWorks() {
   return (
-    <section id="tempo-real" className="bg-[#0F172A] py-24">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">Pedidos acontecendo em tempo real.</h2>
-        <p className="mt-4 max-w-2xl text-slate-300">Da confirmação do PIX até a entrega, cada etapa fica clara para todos.</p>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          <div className="rounded-3xl border border-slate-700 bg-slate-900/60 p-5">
-            <p className="text-sm font-semibold text-slate-200">Linha do tempo</p>
-            <div className="mt-4 space-y-3">
-              {["PIX confirmado", "Em preparo", "Saiu para entrega", "Pedido entregue"].map((item, i) => (
-                <div key={item} className="flex items-center gap-3 text-sm text-slate-300">
-                  <span className={`h-2.5 w-2.5 rounded-full ${i < 3 ? "bg-emerald-400" : "bg-slate-600"}`} />
-                  {item}
-                </div>
-              ))}
-            </div>
+    <Section id="como-funciona" title="Como funciona" subtitle="Um fluxo simples para cliente, loja e entregador trabalharem juntos.">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((step) => (
+          <div key={step} className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-700 shadow-sm">
+            <p className="text-sm uppercase tracking-[0.3em] text-primary">Passo</p>
+            <h3 className="mt-4 text-xl font-semibold text-slate-900">{step}</h3>
+            <p className="mt-3 text-sm text-slate-600">
+              {step === "Cliente pede"
+                ? "O cliente escolhe o pedido e finaliza com poucos toques."
+                : step === "Loja prepara"
+                ? "A equipe vê o pedido chegar e prepara rapidamente."
+                : step === "Motoboy entrega"
+                ? "O motoboy recebe a rota e faz a entrega mais rápida possível."
+                : "O cliente acompanha o status até o pedido chegar."}
+            </p>
           </div>
-          <div className="rounded-3xl border border-slate-700 bg-white p-5">
-            <p className="text-sm text-slate-500">Painel lateral</p>
-            <p className="mt-1 font-bold text-slate-900">Pedido #8421</p>
-            <div className="mt-4 grid gap-2">
-              <div className="rounded-xl bg-emerald-50 p-3 text-sm font-medium text-emerald-700">Pagamento aprovado</div>
-              <div className="rounded-xl bg-amber-50 p-3 text-sm font-medium text-amber-700">Aguardando retirada</div>
-              <div className="rounded-xl bg-sky-50 p-3 text-sm font-medium text-sky-700">Motoboy em rota</div>
-            </div>
-          </div>
-          <div className="space-y-5 rounded-3xl border border-slate-700 bg-slate-900/60 p-5">
-            <div className="rounded-2xl bg-white p-4">
-              <p className="text-xs text-slate-500">Cartão de entrega</p>
-              <p className="mt-1 font-semibold text-slate-900">Rua das Acácias, 142</p>
-              <p className="text-sm text-slate-500">Previsão: 8 min</p>
-            </div>
-            <div className="grid grid-cols-2 gap-3 text-center">
-              <div className="rounded-xl bg-slate-800 p-3 text-white"><p className="text-xs text-slate-400">Ao vivo</p><p className="text-lg font-bold">16</p></div>
-              <div className="rounded-xl bg-slate-800 p-3 text-white"><p className="text-xs text-slate-400">Concluídos</p><p className="text-lg font-bold">57</p></div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
 
-export function HowItWorks() {
+export function CourierSection() {
   return (
-    <Section id="como-funciona" title="Como funciona" subtitle="Uma jornada única conectando cliente, loja e entrega.">
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-100 md:p-10">
-        <div className="grid gap-8 md:grid-cols-4 md:gap-4">
-          {steps.map((step, i) => (
-            <div key={step} className="relative">
-              {i < steps.length - 1 ? <span className="absolute left-8 top-4 hidden h-px w-[calc(100%-1rem)] bg-slate-300 md:block" /> : null}
-              <div className="relative z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">{i + 1}</div>
-              <p className="mt-3 font-semibold text-slate-900">{step}</p>
-            </div>
-          ))}
-        </div>
+    <Section id="tempo-real" title="Controle em tempo real para toda a operação" subtitle="Acompanhe cada etapa do pedido, desde a cozinha até a entrega final.">
+      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        {steps.map((step) => (
+          <Card key={step} className="border-slate-200 text-slate-900">
+            <h3 className="text-xl font-semibold">{step}</h3>
+            <p className="mt-3 text-sm text-slate-600">Fique por dentro do andamento do pedido com atualizações instantâneas e indicadores visuais.</p>
+          </Card>
+        ))}
       </div>
     </Section>
   );
@@ -268,18 +241,21 @@ export function HowItWorks() {
 
 export function Pricing() {
   return (
-    <Section id="precos" title="Planos" subtitle="Comece simples e evolua conforme sua operação cresce.">
-      <div className="grid gap-4 md:grid-cols-3">
+    <Section id="precos" title="Planos que acompanham o seu crescimento" subtitle="Preços claros e escaláveis para quem quer crescer sem dor de cabeça.">
+      <div className="grid gap-6 lg:grid-cols-3">
         {plans.map((plan) => (
-          <Card key={plan.name} className={`flex flex-col gap-3 border-slate-200 ${plan.highlight ? "ring-2 ring-primary/30" : ""}`}>
-            <p className="text-lg font-bold text-slate-900">{plan.name}</p>
-            <p className="text-2xl font-extrabold text-primary">{plan.price}</p>
-            <ul className="space-y-1 text-sm text-slate-600">
+          <Card key={plan.name} className={plan.highlight ? "border-primary bg-gradient-to-br from-rose-50 to-white" : ""}>
+            <p className="text-sm font-semibold text-primary">{plan.name}</p>
+            <p className="mt-4 text-3xl font-bold text-slate-900">{plan.price}</p>
+            <ul className="mt-6 space-y-3 text-sm text-slate-600">
               {plan.features.map((feature) => (
-                <li key={feature}>• {feature}</li>
+                <li key={feature} className="flex items-start gap-2">
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" />
+                  {feature}
+                </li>
               ))}
             </ul>
-            <button className={`mt-auto rounded-xl px-4 py-2.5 text-sm font-semibold ${plan.highlight ? "bg-primary text-white" : "bg-slate-900 text-white"}`}>Começar agora</button>
+            <button className="mt-8 w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">Assinar</button>
           </Card>
         ))}
       </div>
@@ -289,11 +265,12 @@ export function Pricing() {
 
 export function FinalCta() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
-      <div className="rounded-3xl bg-primary px-8 py-16 text-white shadow-2xl shadow-rose-300/40">
-        <h3 className="text-3xl font-bold md:text-4xl">Pronto para modernizar seu delivery?</h3>
-        <p className="mt-3 max-w-2xl text-rose-100">Transforme seu cardápio em uma experiência rápida, bonita e conectada.</p>
-        <button className="mt-7 rounded-xl bg-white px-6 py-3 font-semibold text-primary">Quero conhecer a Moven</button>
+    <section className="bg-slate-950 py-20 text-white">
+      <div className="mx-auto max-w-7xl px-6 text-center md:px-10">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-rose-300">Pronto para crescer?</p>
+        <h2 className="mt-6 text-4xl font-extrabold tracking-tight">Lance seu delivery com mais agilidade e visual moderno.</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-300">Teste a Moven hoje e veja como a equipe, o cliente e o motoboy podem trabalhar juntos em um fluxo claro.</p>
+        <button className="mt-10 rounded-full bg-primary px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-rose-400/30 transition hover:bg-rose-700">Solicitar demonstração</button>
       </div>
     </section>
   );
@@ -301,18 +278,11 @@ export function FinalCta() {
 
 export function Footer() {
   return (
-    <footer id="contato" className="border-t border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-6 py-10 text-sm text-slate-500 md:flex-row md:px-10">
-        <div>
-          <p className="text-xl font-extrabold text-slate-900">Moven</p>
-          <p>Delivery em movimento.</p>
-        </div>
-        <div className="flex gap-5">
-          {navItems.slice(0, 4).map((item) => (
-            <a href={item.href} key={item.label} className="hover:text-slate-900">{item.label}</a>
-          ))}
-        </div>
-        <p>© {new Date().getFullYear()} Moven. Todos os direitos reservados.</p>
+    <footer className="border-t border-slate-200/80 bg-white py-10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between md:px-10">
+        <p className="text-sm font-semibold text-slate-900">Moven</p>
+        <p className="text-sm text-slate-600">Plataforma de delivery local criada para lanchonetes e motoboys.</p>
+        <p className="text-sm text-slate-500">© 2026 Moven. Todos os direitos reservados.</p>
       </div>
     </footer>
   );

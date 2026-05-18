@@ -4,14 +4,14 @@ import {
   FinalCta,
   Footer,
   Hero,
-  ProofBar,
   HowItWorks,
   Navbar,
   Pricing,
+  ProofBar,
   RestaurantSection,
-} from "@/components/landing";
+} from "./landing";
 
-export default function HomePage() {
+export function LandingPageContent() {
   return (
     <main>
       <Navbar />
